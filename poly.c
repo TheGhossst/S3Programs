@@ -8,7 +8,6 @@ struct node{
 void read(struct node**);
 void display(struct node*);
 void add(struct node**,struct node*,struct node*);
-void mult(struct node**,struct node*,struct node*);
 int main()
 {
 
@@ -22,10 +21,8 @@ int main()
 	printf("\nSecond polynomial:\n");
 	read(&second);
 	display(second);
-    add(&result,first,second);
-    display(result);
-	mult(&mul,first,second);
-	display(mul);
+    	add(&result,first,second);
+    	display(result);
 }
 void read(struct node** p){
     int coeff, exp, cont;
@@ -108,32 +105,4 @@ void add(struct node** result,struct node* p1,struct node* p2){
  			p2=p2->link;
  		}
  	}
-}
-void mult(struct node **n1,struct node *n2,struct node *n3) 
-{
-	struct node * temp=(struct node*)malloc(sizeof(struct node));
-	int coefficient, exponent;
-	temp = n3;
-	if(!n2 && !n3){
-		return;
-	} 
-	if(!n2) {
-		*n1 = n3;
-	} 
-	else if(!n3) {
-		*n1 = n2;
-	} 
-	else {
-		while(n2) {
-			while(n3) {
-				temp->coeff = n2->coeff * n3->coeff;
-				temp->expo = n2->expo + n3->expo;
-				n3 = n3->link;
-				add(n1, temp->coeff, temp->expo);
-			}
-			n3 = temp;
-			n2 = n2->link;
-		}
-	}
-	return;
 }
