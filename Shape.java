@@ -1,5 +1,3 @@
-package Lab;
-
 abstract class Shape {
     abstract public void numberofSides();
 }
